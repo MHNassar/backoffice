@@ -1,0 +1,6 @@
+parameters:
+  elasticsearch:
+    connectionStrategy: Simple
+    servers:
+      benz:
+        host: 172.29.67.222

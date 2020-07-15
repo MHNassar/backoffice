@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    <form METHOD="GET" class="col-12 border-bottom">
+        <div class="row">
+            <div class="form-group col-2">
+                <label>Product Id</label>
+                <input type="text" class="form-control" placeholder="Product Id" name="id">
+            </div>
+            <div class="form-group col-2">
+                <label>Category</label>
+                <select class="form-control" name="category">
+                    <option value="" selected>All</option>
+                    <option value="pkw">PKW</option>
+                    <option value="suv">SUV</option>
+                </select>
+            </div>
+            <div class="form-group col-2">
+                <label>Season</label>
+                <select class="form-control" name="season" id="exampleFormControlSelect1">
+                    <option value="" selected>All</option>
+                    <option value="Sommerreifen">Sommerreifen</option>
+                    <option value="Winterreifen">Winterreifen</option>
+                    <option value="Ganzjahresreifen">Ganzjahresreifen</option>
+                </select>
+            </div>
+            <div class="form-group col-2">
+                <label>manufacturer Name</label>
+                <input type="text" class="form-control" name="manufacturerName" placeholder="manufacturer Name">
+            </div>
+            <div class="form-group col-2">
+                <label>Status</label>
+                <select class="form-control" name="status">
+                    <option value="" selected>All</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+
+            </div>
+            <div class="form-group col-2">
+                <label>Action</label>
+                <button type="submit" class="btn btn-primary form-control">Filter</button>
+
+            </div>
+        </div>
+
+    </form>
+    <div class="table-responsive text-nowrap ">
+        <!--Table-->
+        <table class="table table-striped">
+
+            <!--Table head-->
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Season</th>
+                <th>Category</th>
+                <th>VehicleType</th>
+                <th>Manufacturer Name</th>
+                <th>Manufacturer Category</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <!--Table head-->
+
+            <!--Table body-->
+            <tbody>
+            {% for item in list %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.season }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.vehicleType }}</td>
+                    <td>{{ item.manufacturerName }}</td>
+                    <td>{{ item.manufacturerCategory }}</td>
+                    <td>{{ item.status }}</td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+            <!--Table body-->
+
+
+        </table>
+        <!--Table-->
+    </div>
+
+    <nav aria-label>
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

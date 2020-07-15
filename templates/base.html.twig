@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... -->
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar navbar-light dark-blue">
+    <img src="{{ asset('build/images/check24-logo.svg') }}" width="100" height="30" alt="">
+</nav>
+
+<div class="container-fluid">
+    <div class="row min-vh-100 flex-column flex-md-row">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% include 'base/sidebar.html.twig' %}
+        {% endif %}
+
+        <main class="col bg-faded py-3 flex-grow-1">
+            {% block body %}{% endblock %}
+        </main>
+    </div>
+</div>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

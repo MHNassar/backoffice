@@ -1,0 +1,35 @@
+server {
+    listen 80;
+
+    server_name backoffice-dev.reifen.check24.de;
+    root /home/tyres/backoffice/public;
+
+    location / {
+        try_files $uri /index.php$is_args$args;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass unix:/var/run/php7-fpm_tyres.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include /etc/nginx/fastcgi_params;
+
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+
+        internal;
+    }
+
+    # return 404 for all other php files not matching the front controller
+    # this prevents access to other php files you don't want to be accessible.
+    location ~ \.php$ {
+        return 404;
+    }
+
+    gzip on;
+    gzip_vary on;
+    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml application/json;
+    gzip_disable "MSIE [1-6]\.";
+
+    error_log /home/tyres/backoffice/var/logs/backofficedev.reifen.check24.error.log;
+    access_log /home/tyres/backoffice/var/logs/backofficedev.reifen.check24.access.log;
+}

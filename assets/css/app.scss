@@ -1,0 +1,26 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-size: .9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  text-align: left;
+  background-color: #084085;
+  height: 95vh;
+}
+@import "~bootstrap/scss/bootstrap";
+
+.bg-blue {
+  background-color: #084085;
+}
+.dark-blue {
+  background-color: #063773;
+}
+
+.navbar{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+}

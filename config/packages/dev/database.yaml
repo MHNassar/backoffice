@@ -1,0 +1,7 @@
+parameters:
+  db_connections:
+    -
+      dsn: 'mysql:host=172.29.67.222;dbname=autoteile_c24_20190604'
+      username: 'developer'
+      password: '%env(DB_PASSWORD)%'
+      debug: true
